@@ -1,0 +1,118 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #222;
+
+  &.on {
+    background: radial-gradient(
+      #555,
+      #111
+    );
+  }
+
+  &.on .bulb {
+    background-color: #fff;
+    box-shadow: 0 0 50px #fff,
+                0 0 100px #fff,
+                0 0 150px #fff,
+                0 0 200px, #fff,
+                0 0 250px #fff,
+                0 0 300px #fff,
+                0 0 350px #fff;
+  }
+
+  &.on .bulb::before {
+    background-color: #fff;
+  }
+
+  &.on .bulb::after {
+    content: '';
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(40px);
+  }
+
+  &.on .bulb > span:nth-child(1) {
+    box-shadow: 20px 20px 0 10px #fff;
+  }
+
+  &.on .bulb > span:nth-child(2) {
+    box-shadow: -20px 20px  0 10px #fff;
+  }
+}
+
+.light {
+  .bulb {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    background-color: #444;
+    border-radius: 50%;
+    z-index: 2;
+
+    &::before {
+      content: '';
+      width: 35px;
+      height: 80px;
+      position: absolute;
+      top: -50px;
+      left: 22.5px;
+      background-color: #444;
+      border-top: 30px solid #000;
+      border-radius: 10px;
+    }
+
+    & > span:nth-child(1) {
+      width: 30px;
+      height: 30px;
+      display: block;
+      position: absolute;
+      top: -16px;
+      left: -4px;
+      background: transparent;
+      border-bottom-right-radius: 40px;
+      transform: rotate(342deg);
+      box-shadow: 20px 20px 0 10px #444;
+    }
+
+    & > span:nth-child(2) {
+      width: 30px;
+      height: 30px;
+      display: block;
+      position: absolute;
+      top: -16px;
+      right: -4px;
+      background: transparent;
+      border-bottom-left-radius: 40px;
+      transform: rotate(17deg);
+      box-shadow: -20px 20px 0 10px #444;
+    }
+  }
+
+  .wire {
+    width: 4px;
+    height: 60vh;
+    position: absolute;
+    bottom: 50%;
+    left: calc(50% - 2px);
+    background-color: #000;
+    z-index: 1;
+  }
+}
